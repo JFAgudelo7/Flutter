@@ -44,7 +44,8 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
           ],
         ),
       ),
-      floatingActionButton: Column(
+      //La siguiente es la aplicación de los botones de formar individual, poco óptima
+      /*       floatingActionButton: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           FloatingActionButton(
@@ -71,17 +72,55 @@ class _CounterFunctionsScreenState extends State<CounterFunctionsScreen> {
 
           const SizedBox( height: 10),
           
-          FloatingActionButton(
-            shape: const StadiumBorder(),
-            onPressed: () {
-              setState(() {
-                clickCounter--;
-              });
+          CustomButton(icon: Icons.refresh_outlined),
+        ],
+      ), */
+      //Ahora, la forma usando un widget personalizado, más óptima
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          CustomButton(            
+            icon: Icons.refresh_rounded,
+            onPressed: () {              
+              clickCounter = 0;
+              setState(() {});
             },
-            child: const Icon(Icons.exposure_minus_1_outlined),
-          )
+          ),
+          const SizedBox(height: 10),
+          CustomButton(
+            icon: Icons.exposure_minus_1_outlined,
+            onPressed: () {
+              if (clickCounter == 0) return;
+              clickCounter--;
+              setState(() {});
+            },
+          ),
+          const SizedBox(height: 10),
+          CustomButton(
+            icon: Icons.plus_one,
+            onPressed: () {
+              clickCounter++;
+              setState(() {});
+            },
+          ),
         ],
       ),
+    );
+  }
+}
+
+class CustomButton extends StatelessWidget {
+  final IconData icon;
+  final VoidCallback? onPressed;
+
+  const CustomButton({super.key, required this.icon, this.onPressed});
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      shape: const StadiumBorder(),
+      onPressed: onPressed,
+      child: Icon(icon),
     );
   }
 }
