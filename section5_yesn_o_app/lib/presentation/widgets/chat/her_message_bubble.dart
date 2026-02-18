@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+
+class HerMessageBubble extends StatelessWidget {
+  const HerMessageBubble({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final colors = Theme.of(
+      context,
+    ).colorScheme; //Busca el tema actual en el contexto para obtener los colores definidos en el color scheme.
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: colors.secondary,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Text(
+              'lorem ipsum dolor sit amet.',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ),
+        const SizedBox(height: 5),
+        _ImageBubble(),
+        const SizedBox(height: 10),
+      ],
+    );
+  }
+}
+
+class _ImageBubble extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(
+      context,
+    ).size; //Obtiene el tamaño de la pantalla para ajustar el tamaño de la imagen.
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: Image.network(
+        'https://yesno.wtf/assets/yes/13-c3082a998e7758be8e582276f35d1336.gif',
+        width: size.width * 0.7,
+        height: 150,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+}
