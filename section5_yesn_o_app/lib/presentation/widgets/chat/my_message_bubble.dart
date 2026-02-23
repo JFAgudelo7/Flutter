@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:section5_yesn_o_app/domain/entities/message.dart';
 
 class MyMessageBubble extends StatelessWidget {
+
+final Message message;
+
   const MyMessageBubble({
     super.key,
+    required this.message,
   });
 
   @override
@@ -18,7 +23,7 @@ class MyMessageBubble extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text('lorem ipsum dolor sit amet.', style: TextStyle(color: Colors.white),),
+            child: Text(message.text, style: TextStyle(color: Colors.white),),
           ),
         ),
         const SizedBox(height: 10),
