@@ -33,6 +33,9 @@ migrate_working_dir/
 /build/
 /coverage/
 
+# Video assets (large binary files)
+/assets/videos/
+
 # Symbolication related
 app.*.symbols
 
