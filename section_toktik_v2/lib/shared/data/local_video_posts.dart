@@ -32,7 +32,7 @@ List<Map<String, dynamic>> videoPosts = [
   {
     'name': 'No quiero ir a trabajar hoy señor Stark',
     'videoUrl': 'assets/videos/6.mp4',
-    'likes': 10,
+    'likes': 100,
     'views': 330,
   },
   {
@@ -44,7 +44,7 @@ List<Map<String, dynamic>> videoPosts = [
   {
     'name': '¿Ya llegamos a la India?... umm si',
     'videoUrl': 'assets/videos/8.mp4',
-    'likes': 342,
+    'likes': 3412122,
     'views': 3332,
   },
 
