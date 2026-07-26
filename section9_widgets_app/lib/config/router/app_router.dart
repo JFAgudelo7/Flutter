@@ -5,60 +5,63 @@ import 'package:section8_widgets_app/presentation/screens/screens.dart';
 final appRouter = GoRouter(
   initialLocation: '/',
   routes: [
-
+    GoRoute(
+      path: '/counter-riverpod',
+      name: CounterScreen.name,
+      builder: (context, state) => const CounterScreen(),
+    ),
     GoRoute(
       path: '/',
       name: HomeScreen.name,
-      builder: (context, state) => const HomeScreen()
+      builder: (context, state) => const HomeScreen(),
     ),
 
     GoRoute(
       path: '/buttons',
       name: ButtonsScreen.name,
-      builder: (context, state) => const ButtonsScreen()
+      builder: (context, state) => const ButtonsScreen(),
     ),
 
     GoRoute(
       path: '/cards',
       name: CardsScreen.name,
-      builder: (context, state) => const CardsScreen()
+      builder: (context, state) => const CardsScreen(),
     ),
 
-      GoRoute(
+    GoRoute(
       path: '/progress',
       name: ProgressScreen.name,
-      builder: (context, state) => const ProgressScreen()
+      builder: (context, state) => const ProgressScreen(),
     ),
 
     GoRoute(
       path: '/snackbar',
       name: SnackbarScreen.name,
-      builder: (context, state) => const SnackbarScreen()
-      ),
+      builder: (context, state) => const SnackbarScreen(),
+    ),
 
-      GoRoute(
+    GoRoute(
       path: '/animated',
       name: AnimatedScreen.name,
-      builder: (context, state) => const AnimatedScreen()
-      ),
+      builder: (context, state) => const AnimatedScreen(),
+    ),
 
-      GoRoute(
+    GoRoute(
       path: '/ui-controls',
       name: UiControlsScreen.name,
-      builder: (context, state) => const UiControlsScreen()
-      ),
+      builder: (context, state) => const UiControlsScreen(),
+    ),
 
-     GoRoute(
+    GoRoute(
       path: '/tutorial',
       name: AppTutorialScreen.name,
-      builder: (context, state) => const AppTutorialScreen()
-      ),
-      
-      GoRoute(
+      builder: (context, state) => const AppTutorialScreen(),
+    ),
+
+    GoRoute(
       path: '/infinite',
       name: InfinityScrollScreen.name,
-      builder: (context, state) => const InfinityScrollScreen()
-      ),
-
+      builder: (context, state) => const InfinityScrollScreen(),
+    ),
   ],
 );

@@ -1,31 +1,37 @@
 import 'package:flutter/material.dart' show IconData, Icons;
 
-class MenuItem{
+class MenuItem {
   final String title;
   final String subTitle;
   final String link;
   final IconData icon;
 
   const MenuItem({
-    required this.title, 
-    required this.subTitle, 
-    required this.link, 
-    required this.icon
-    });
+    required this.title,
+    required this.subTitle,
+    required this.link,
+    required this.icon,
+  });
 }
 
 const appMenuItems = <MenuItem>[
   MenuItem(
+    title: 'Riverpod Counter',
+    subTitle: 'Introduction To Riverpod',
+    link: '/counter-riverpod',
+    icon: Icons.add,
+  ),
+  MenuItem(
     title: "Buttons",
     subTitle: 'Flutter Buttons',
     link: '/buttons',
-    icon: Icons.smart_button_outlined
+    icon: Icons.smart_button_outlined,
   ),
   MenuItem(
     title: "Cards",
     subTitle: 'Stylized Container',
     link: '/cards',
-    icon: Icons.credit_card
+    icon: Icons.credit_card,
   ),
   MenuItem(
     title: "Progress Indicators",
@@ -35,38 +41,37 @@ const appMenuItems = <MenuItem>[
   ),
 
   MenuItem(
-    title: 'Snackbars & Dialogs', 
-    subTitle: 'Screen Indicators', 
-    link: '/snackbar', 
-    icon: Icons.info_outline
+    title: 'Snackbars & Dialogs',
+    subTitle: 'Screen Indicators',
+    link: '/snackbar',
+    icon: Icons.info_outline,
   ),
 
   MenuItem(
-    title: 'Animated Container', 
-    subTitle: 'Animated Stateful Widget', 
-    link: '/animated', 
-    icon: Icons.check_box_outline_blank_rounded
+    title: 'Animated Container',
+    subTitle: 'Animated Stateful Widget',
+    link: '/animated',
+    icon: Icons.check_box_outline_blank_rounded,
   ),
 
   MenuItem(
-    title: 'UI Controls + Tiles', 
-    subTitle: 'A Flutter Control Series', 
-    link: '/ui-controls', 
-    icon: Icons.car_rental_outlined
+    title: 'UI Controls + Tiles',
+    subTitle: 'A Flutter Control Series',
+    link: '/ui-controls',
+    icon: Icons.car_rental_outlined,
   ),
 
   MenuItem(
-    title: 'App Tutorial', 
-    subTitle: 'A short introductory tutorial', 
-    link: '/tutorial', 
-    icon: Icons.accessible_rounded
+    title: 'App Tutorial',
+    subTitle: 'A short introductory tutorial',
+    link: '/tutorial',
+    icon: Icons.accessible_rounded,
   ),
 
-    MenuItem(
-    title: 'Inifinity Scroll and Pull', 
-    subTitle: 'Infinite Lists and Pull to Refresh', 
-    link: '/infinite', 
-    icon: Icons.list_alt_rounded
+  MenuItem(
+    title: 'Inifinity Scroll and Pull',
+    subTitle: 'Infinite Lists and Pull to Refresh',
+    link: '/infinite',
+    icon: Icons.list_alt_rounded,
   ),
-
 ];
