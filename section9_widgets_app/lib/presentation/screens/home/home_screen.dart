@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:section8_widgets_app/config/menu/menu_items.dart';
+import 'package:section8_widgets_app/presentation/widgets/side_menu.dart';
 
 class HomeScreen extends StatelessWidget {
 
@@ -10,12 +11,17 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final ScaffoldKey = GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      key: ScaffoldKey, //This will keep the status of the scaffiold, if there is amenu opene, and similar
       appBar: AppBar(
         title: const Text('Flutter + Material 3'),
         centerTitle: true,
       ),
       body: const _HomeView(),
+      drawer: SideMenu( scaffoldKey: ScaffoldKey),
     );
   }
 }
