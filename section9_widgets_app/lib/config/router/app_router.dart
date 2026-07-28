@@ -63,5 +63,11 @@ final appRouter = GoRouter(
       name: InfinityScrollScreen.name,
       builder: (context, state) => const InfinityScrollScreen(),
     ),
+
+    GoRoute(
+      path: '/theme-changer',
+      name: ThemeChangerScreen.name,
+      builder: (context, state) => const ThemeChangerScreen(),
+    ),
   ],
 );
