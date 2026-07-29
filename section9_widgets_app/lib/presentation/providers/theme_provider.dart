@@ -5,3 +5,5 @@ final themeProvider = StateProvider((ref) => false);
 
 //Unchangable Color List
 final colorListProvider = Provider((ref) => colorList);
+
+final selectedColorProvider = StateProvider((ref) => 0);

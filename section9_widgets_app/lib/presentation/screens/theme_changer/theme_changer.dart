@@ -11,6 +11,7 @@ class ThemeChangerScreen extends ConsumerWidget {
   Widget build(Object context, WidgetRef ref) {
 
     final bool isDarkMode = ref.watch(themeProvider);
+
   
 
     return Scaffold(
@@ -41,6 +42,7 @@ class _ThemeChangerView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
 
     final List<Color> colors = ref.watch( colorListProvider );
+    final int selectedColor = ref.watch( selectedColorProvider );
 
     return ListView.builder(
 
@@ -53,9 +55,9 @@ class _ThemeChangerView extends ConsumerWidget {
           subtitle: Text('${ color.value }'),
           activeColor: color,
           value: index,
-          groupValue: 5,
+          groupValue: selectedColor,
           onChanged: (value){
-            //TO DO
+            ref.read( selectedColorProvider.notifier ).state = index;
           }
         );
       }
