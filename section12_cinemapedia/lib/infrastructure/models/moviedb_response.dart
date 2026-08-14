@@ -1,19 +1,14 @@
-import 'dart:convert';
 
 import 'package:section12_cinemapedia/infrastructure/models/movie_movidedb.dart';
 
-Welcome welcomeFromJson(String str) => Welcome.fromJson(json.decode(str));
-
-String welcomeToJson(Welcome data) => json.encode(data.toJson());
-
-class Welcome {
+class MovieDbResponse {
     final Dates? dates;
     final int page;
     final List<MovieMovieDB> results;
     final int totalPages;
     final int totalResults;
 
-    Welcome({
+    MovieDbResponse({
         required this.dates,
         required this.page,
         required this.results,
@@ -21,7 +16,7 @@ class Welcome {
         required this.totalResults,
     });
 
-    factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+    factory MovieDbResponse.fromJson(Map<String, dynamic> json) => MovieDbResponse(
         dates: json["dates"] ? Dates.fromJson(json["dates"]) : null,
         page: json["page"],
         results: List<MovieMovieDB>.from(json["results"].map((x) => MovieMovieDB.fromJson(x))),

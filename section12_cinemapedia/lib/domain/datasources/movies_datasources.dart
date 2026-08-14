@@ -1,5 +1,5 @@
-import 'package:section12_cinemapedia/domain/entities/movide.dart';
+import 'package:section12_cinemapedia/domain/entities/movie.dart';
 
-abstract class MovieDatasource {
+abstract class MoviesDatasource {
   Future<List<Movie>> getNowPlaying({int page = 1});
 }
