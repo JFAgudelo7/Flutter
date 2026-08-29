@@ -11,7 +11,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: _HomeView()));
+    return Scaffold(
+      body: _HomeView(), 
+      bottomNavigationBar: CustomBottomNavigation()
+    );
   }
 }
 
@@ -32,16 +35,15 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    final slideShowsMovies = ref.watch( moviesSlideShowProvider );
+    final slideShowsMovies = ref.watch(moviesSlideShowProvider);
 
     return Column(
       children: [
-
         CustomAppBar(),
 
-        MoviesSlideshow(movies: slideShowsMovies)
+        MoviesSlideshow(movies: slideShowsMovies),
 
- /*        Expanded(
+        /*        Expanded(
           child: ListView.builder(
             itemCount: nowPlayingMovies.length,
             itemBuilder: (context, index) {
