@@ -12,8 +12,8 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _HomeView(), 
-      bottomNavigationBar: CustomBottomNavigation()
+      body: _HomeView(),
+      bottomNavigationBar: CustomBottomNavigation(),
     );
   }
 }
@@ -36,31 +36,74 @@ class _HomeViewState extends ConsumerState<_HomeView> {
   @override
   Widget build(BuildContext context) {
     final slideShowsMovies = ref.watch(moviesSlideShowProvider);
-    final nowPlayingMovies = ref.watch( nowPlayingMoviesProvider );
+    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
 
-    return Column(
-      children: [
-        CustomAppBar(),
+    return CustomScrollView(
+      slivers: [
 
-        MoviesSlideshow(movies: slideShowsMovies),
+        const SliverAppBar(
+          floating: true,
+          flexibleSpace: FlexibleSpaceBar(
+            title: CustomAppBar(),
+          ),
+        ),
 
-        MoviesHorizontalListview( 
-          movies: nowPlayingMovies,
-          title: 'On Cinemas',
-          subtitle: 'Monday 31',
-
+        SliverList(delegate: SliverChildBuilderDelegate((context, index){
+          return Column(
+        children: [
+          //CustomAppBar(),
+      
+          MoviesSlideshow(movies: slideShowsMovies),
+      
+          MoviesHorizontalListview(
+            movies: nowPlayingMovies,
+            title: 'On Cinemas',
+            subtitle: 'Monday 31',
+            loadNextPage: () =>
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+          ),
+      
+          MoviesHorizontalListview(
+            movies: nowPlayingMovies,
+            title: 'Soon',
+            subtitle: 'This Month',
+            loadNextPage: () =>
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+          ),
+      
+          MoviesHorizontalListview(
+            movies: nowPlayingMovies,
+            title: 'Popular',
+            subtitle: 'All Time',
+            loadNextPage: () =>
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
+          ),
+      
+          MoviesHorizontalListview(
+            movies: nowPlayingMovies,
+            title: 'Best Rated',
+            subtitle: 'All Time',
+            loadNextPage: () =>
+                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
           ),
 
-        /*        Expanded(
-          child: ListView.builder(
-            itemCount: nowPlayingMovies.length,
-            itemBuilder: (context, index) {
-              final movie = nowPlayingMovies[index];
-              return ListTile(title: Text(movie.title));
-            },
-          ),
-        ), */
-      ],
+          const SizedBox( height: 10),
+      
+          /*        Expanded(
+            child: ListView.builder(
+              itemCount: nowPlayingMovies.length,
+              itemBuilder: (context, index) {
+                final movie = nowPlayingMovies[index];
+                return ListTile(title: Text(movie.title));
+              },
+            ),
+          ), */
+        ],
+      );
+        },
+        childCount: 10
+        ))
+      ]
     );
   }
 }
