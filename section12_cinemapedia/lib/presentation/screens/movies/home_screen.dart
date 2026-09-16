@@ -31,65 +31,69 @@ class _HomeViewState extends ConsumerState<_HomeView> {
     super.initState();
 
     ref.read(nowPlayingMoviesProvider.notifier).loadNextPage();
+    ref.read(popularMoviesProvider.notifier).loadNextPage();
+    ref.read(topRatedMoviesProvider.notifier).loadNextPage();
+    ref.read(upcomingMoviesProvider.notifier).loadNextPage();
   }
 
   @override
   Widget build(BuildContext context) {
     final slideShowsMovies = ref.watch(moviesSlideShowProvider);
     final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    final popularMovies = ref.watch(popularMoviesProvider);
+    final topRatedMovies = ref.watch(topRatedMoviesProvider);
+    final upcomigMovies = ref.watch(upcomingMoviesProvider);
 
     return CustomScrollView(
       slivers: [
-
         const SliverAppBar(
           floating: true,
-          flexibleSpace: FlexibleSpaceBar(
-            title: CustomAppBar(),
-          ),
+          flexibleSpace: FlexibleSpaceBar(title: CustomAppBar()),
         ),
 
-        SliverList(delegate: SliverChildBuilderDelegate((context, index){
-          return Column(
-        children: [
-          //CustomAppBar(),
-      
-          MoviesSlideshow(movies: slideShowsMovies),
-      
-          MoviesHorizontalListview(
-            movies: nowPlayingMovies,
-            title: 'On Cinemas',
-            subtitle: 'Monday 31',
-            loadNextPage: () =>
-                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
-          ),
-      
-          MoviesHorizontalListview(
-            movies: nowPlayingMovies,
-            title: 'Soon',
-            subtitle: 'This Month',
-            loadNextPage: () =>
-                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
-          ),
-      
-          MoviesHorizontalListview(
-            movies: nowPlayingMovies,
-            title: 'Popular',
-            subtitle: 'All Time',
-            loadNextPage: () =>
-                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
-          ),
-      
-          MoviesHorizontalListview(
-            movies: nowPlayingMovies,
-            title: 'Best Rated',
-            subtitle: 'All Time',
-            loadNextPage: () =>
-                ref.read(nowPlayingMoviesProvider.notifier).loadNextPage(),
-          ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate((context, index) {
+            return Column(
+              children: [
+                //CustomAppBar(),
+                MoviesSlideshow(movies: slideShowsMovies),
 
-          const SizedBox( height: 10),
-      
-          /*        Expanded(
+                MoviesHorizontalListview(
+                  movies: nowPlayingMovies,
+                  title: 'On Cinemas',
+                  subtitle: 'Monday 31',
+                  loadNextPage: () => ref
+                      .read(nowPlayingMoviesProvider.notifier)
+                      .loadNextPage(),
+                ),
+
+                MoviesHorizontalListview(
+                  movies: popularMovies,
+                  title: 'Popular',
+                  subtitle: 'All Time',
+                  loadNextPage: () =>
+                      ref.read(popularMoviesProvider.notifier).loadNextPage(),
+                ),
+
+                MoviesHorizontalListview(
+                  movies: topRatedMovies,
+                  title: 'Soon',
+                  subtitle: 'This Month',
+                  loadNextPage: () =>
+                      ref.read(topRatedMoviesProvider.notifier).loadNextPage(),
+                ),
+
+                MoviesHorizontalListview(
+                  movies: upcomigMovies,
+                  title: 'Best Rated',
+                  subtitle: 'All Time',
+                  loadNextPage: () =>
+                      ref.read(upcomingMoviesProvider.notifier).loadNextPage(),
+                ),
+
+                const SizedBox(height: 10),
+
+                /*        Expanded(
             child: ListView.builder(
               itemCount: nowPlayingMovies.length,
               itemBuilder: (context, index) {
@@ -98,12 +102,11 @@ class _HomeViewState extends ConsumerState<_HomeView> {
               },
             ),
           ), */
-        ],
-      );
-        },
-        childCount: 10
-        ))
-      ]
+              ],
+            );
+          }, childCount: 10),
+        ),
+      ],
     );
   }
 }
